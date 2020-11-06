@@ -7,6 +7,7 @@ function Main() {
   return(
     <div className="ui container">
       <SearchTab />
+      <h1>wegerg</h1>
       <SuggestionBar />
       <h1>GRID</h1>
     </div>

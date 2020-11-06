@@ -5,6 +5,7 @@ function SearchTab() {
     <div className="search-tab">
       <Search
         className="search-input"
+        fluid={true}
       />
     </div>
   )

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import SearchTab from './SearchTab';
 import SuggestionBar from './SuggestionBar';
+import Results from './Results';
 
 const stop = 1;
 
@@ -18,7 +19,7 @@ function Main(props) {
       <SearchTab value={query} onChange={handleQuery} />
       <h1>{ query }</h1>
       <SuggestionBar />
-      <h1>GRID</h1>
+      <Results input={query} />
     </div>
   )
 }

@@ -1,19 +1,23 @@
-import { Search } from 'semantic-ui-react';
-import { useState } from 'react';
-
 function SearchTab(props) {
+  
   function handleChange(e) {
-    props.onChange(e.target.value);
+    console.log('Suggestion')
+  }
+
+  function handleInputSubmit(e) {
+    if(e.keyCode === 13) {
+      props.onChange(e.target.value);
+    }
   }
 
   return(
-    <div className="search-tab">
-      <Search
-        className="search-input"
-        fluid={true}
-        onSearchChange={handleChange}
-      />
+    <div className="ui fluid search search-tab">
+      <div className="ui icon input search-input">
+        <input className="prompt" type="text" onChange={handleChange} onKeyDown={(e) => handleInputSubmit(e)} />
+        <i className="search icon" aria-hidden="true"></i> 
+      </div>
     </div>
+
   )
 }
 

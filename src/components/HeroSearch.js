@@ -33,7 +33,7 @@ function HeroSearch(props) {
         </div>
         <div className="ui fluid left icon input">
           <input type="text" placeholder="Search free high-resolution photos" onChange={handleChange} onKeyDown={(e) => handleInputSubmit(e)} />
-          <i aria-hidden="true" class="search icon"></i>
+          <i aria-hidden="true" className="search icon"></i>
         </div>
         <p><strong>Last search: </strong>(nothing searched yet)</p>
       </div>

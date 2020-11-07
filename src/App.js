@@ -8,20 +8,19 @@ class App extends React.Component {
     inputQuery: ''
   }
 
-  componentDidUpdate() {
-    this.setState({inputQuery: HeroSearch.query});
-    console.log('hejka')
+  handleQuery(val) {
+    this.setState({ inputQuery: val });
+  }
+
+  handleView(val) {
+    this.setState({ heroView: val })
   }
 
   render() {
-    console.log(HeroSearch.state.query);
     return (
       <div className="App">
-        {this.state.heroView && <HeroSearch 
-          //onChange={this.setState({heroSearchVisible: false})}
-        />}
-        {this.state.heroView && <Main />}
-        <h1>{this.state.inputQuery}</h1>
+        {this.state.heroView && <HeroSearch visible={this.state.heroView} value={this.state.inputQuery} onChange={this.handleQuery.bind(this)} changeView={this.handleView.bind(this)} />}
+        {!this.state.heroView && <Main input={this.state.inputQuery} />}
       </div>
     );
   }

@@ -35,11 +35,50 @@
   
 .suggestion-bar
   display: flex
-  flex-wrap: wrap
+  height: calc(100% + 15px)
+  box-sizing: initial
+  overflow-x: hidden
+  overflow-y: hidden
+  -webkit-overflow-scrolling: touch
+  scroll-behavior: smooth
   margin: 1.5rem 0
+  &:before, &::after
+    width: 100px
+    background: linear-gradient(90deg,hsla(0,0%,100%,0) 0,#fff 95%,#fff)
+    opacity: 1
+  &:before
+    left: 0
+  &:after
+    right: 0
+
   div
     padding-right: 4px
 
+.clear-search
+  cursor: default
+  position: absolute
+  line-height: 1
+  text-align: center
+  right: 0
+  margin: 0
+  height: 100%
+  width: 2.67142857em
+  opacity: .5
+  border-radius: 0 .28571429rem .28571429rem 0
+  transition: opacity .3s ease
+  > i
+    left: 0
+    position: absolute
+    text-align: center
+    top: 50%
+    width: 100%
+    margin-top: -.5em
+    transform: translate(-50%, -50%)
+
+.suggest-table 
+  max-width: 760px
+  > tr
+  margin: 0 37px
 
 .result-list
   @media (max-width: 600px)

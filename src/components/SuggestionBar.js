@@ -1,11 +1,19 @@
+import { useEffect, useState } from 'react';
 import SuggestionItem from './SuggestionItem';
 
-const suggestions = ['lato', 'montserret', 'poppins', 'playfair', 'arial', 'helvetica'];
+function SuggestionBar({ input }) {
+  const [suggestions, setSuggest] = useState([])
 
-function SuggestionBar() {
+  useEffect(() => {
+    fetch(`https://api.datamuse.com/words?rel_trg=${input}&max=8`).then(res => res.json() ) .then(json => {
+      setSuggest(json)
+    })
+  }, [])
+
+
   return(
     <div className="suggestion-bar">
-      {suggestions.map(item => <SuggestionItem title={item} />)}
+      {suggestions.map((item, index) => <SuggestionItem title={item.word} key={index} />)}
     </div>
   )
 }

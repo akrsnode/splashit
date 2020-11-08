@@ -17,7 +17,7 @@ function ResultItem({ id }) {
           <h4>{id.user.first_name} {id.user.last_name}</h4>
           <a href={id.user.links.html}>@{id.user.username}</a>
         </div>
-        <div className="result-modal-photo" style={{ backgroundImage: `url(${id.urls.large})`}}></div>
+        <div className="result-modal-photo" style={{ backgroundImage: `url(${id.urls.regular})`}}></div>
         <div className="result-modal-location"><i className="map marker alternate icon"></i>{id.user.location}</div>
       </div>}
     </div>

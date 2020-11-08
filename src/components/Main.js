@@ -3,22 +3,21 @@ import SearchTab from './SearchTab';
 import SuggestionBar from './SuggestionBar';
 import Results from './Results';
 
-const stop = 1;
-
-function Main(props) {
-  const [query, setQuery] = useState('');
+function Main({ input }) {
+  const [query, setQuery] = useState(input);
+  const stop = 1;
 
   function handleQuery(value) {
     setQuery(value);
   }
 
-  useEffect(() => {setQuery(props.input)}, [stop])
+  useEffect(() => {setQuery(input)}, [])
 
   return(
     <div className="ui container">
       <SearchTab value={query} onChange={handleQuery} />
       <h1>{ query }</h1>
-      <SuggestionBar />
+      <SuggestionBar input={query} />
       <Results input={query} />
     </div>
   )

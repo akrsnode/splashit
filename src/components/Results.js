@@ -3,7 +3,7 @@ import Unsplash, { toJson } from 'unsplash-js';
 import ResultItem from './ResultItem';
 
 const unsplash = new Unsplash({ accessKey: "I_iCIFkNzjqyJW3tUnZ2EJz-NCOhw3Gf6fgRu8i8e8Y"});
-
+let initSearch = true;
 class Results extends React.Component {
   state= {
     photos: []
@@ -15,18 +15,26 @@ class Results extends React.Component {
     .then(json => {
       this.setState({ photos: json.results });
     })
+    console.log('run get photos')
+  }
+
+  componentDidMount() {
+    initSearch = false;
+    this.getPhotos();
+    console.log(initSearch)
   }
 
   shouldComponentUpdate(nextProps) {
-    if(this.props.input === nextProps.input) return false
-    return true
+    if(this.props.input === nextProps.input) {
+      return true
+    }
+    return false
   }
 
   render() {
-    this.getPhotos()
     return(
       <div className="result-list">
-        {(this.state.photos !== []) && this.state.photos.map((photo) => <ResultItem id={photo} />)}
+        {(this.state.photos !== []) && this.state.photos.map((photo, index) => <ResultItem id={photo} key={index} />)}
       </div>
     )
   }

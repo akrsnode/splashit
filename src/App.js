@@ -1,5 +1,5 @@
 import React from 'react';
-import HeroSearch from './components/HeroSearch';
+import Hero from './components/Hero';
 import Main from './components/Main';
 
 class App extends React.Component {
@@ -19,7 +19,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        {this.state.heroView && <HeroSearch visible={this.state.heroView} value={this.state.inputQuery} onChange={this.handleQuery.bind(this)} changeView={this.handleView.bind(this)} />}
+        {this.state.heroView && <Hero visible={this.state.heroView} value={this.state.inputQuery} onChange={this.handleQuery.bind(this)} changeView={this.handleView.bind(this)} />}
         {!this.state.heroView && <Main input={this.state.inputQuery} />}
       </div>
     );

@@ -9,7 +9,7 @@ function ResultItem({ id }) {
 
   return(
     <div className="result" onClick={openModal}>
-      <img src={id.urls.small} alt={id.alt_description}></img>
+      <img className="fill-space" src={id.urls.small} alt={id.alt_description}></img>
       {open && <div className="result-modal">
         <img src={id.user.profile_image.medium} className="result-modal-profile" alt="Profile"></img>
         <div className="result-modal-text">

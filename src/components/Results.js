@@ -9,7 +9,7 @@ class Results extends React.Component {
   }
 
   getPhotos(input) {
-    unsplash.search.photos(input)
+    unsplash.search.photos(input, 1, 20)
     .then(toJson)
     .then(json => {
       this.setState({ photos: json.results });

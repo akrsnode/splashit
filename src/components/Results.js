@@ -3,29 +3,26 @@ import Unsplash, { toJson } from 'unsplash-js';
 import ResultItem from './ResultItem';
 
 const unsplash = new Unsplash({ accessKey: "I_iCIFkNzjqyJW3tUnZ2EJz-NCOhw3Gf6fgRu8i8e8Y"});
-let initSearch = true;
 class Results extends React.Component {
   state= {
     photos: []
   }
 
-  getPhotos() {
-    unsplash.search.photos(this.props.input)
+  getPhotos(input) {
+    unsplash.search.photos(input)
     .then(toJson)
     .then(json => {
       this.setState({ photos: json.results });
     })
-    console.log('run get photos')
   }
 
   componentDidMount() {
-    initSearch = false;
-    this.getPhotos();
-    console.log(initSearch)
+    this.getPhotos(this.props.input);
   }
 
-  shouldComponentUpdate(nextProps) {
-    if(this.props.input === nextProps.input) {
+  componentDidUpdate(prevProps, prevState) {
+    if(prevState.photos === this.state.photos) {
+      this.getPhotos(this.props.input);
       return true
     }
     return false

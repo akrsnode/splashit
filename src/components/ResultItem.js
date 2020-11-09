@@ -5,7 +5,6 @@ function ResultItem({ id }) {
 
   const openModal = () => {
     setOpen(!open);
-    console.log(id)
   }
 
   return(

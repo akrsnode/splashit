@@ -1,20 +1,26 @@
 import { useEffect, useState } from 'react';
-import SuggestionItem from './SuggestionItem';
+import { Button } from 'semantic-ui-react'
 
-function SuggestionBar({ input }) {
+function SuggestionBar({ input, onChange }) {
   const [suggestions, setSuggest] = useState([])
 
   useEffect(() => {
-    fetch(`https://api.datamuse.com/words?rel_trg=${input}&max=8`).then(res => res.json() ) .then(json => {
+    fetch(`https://api.datamuse.com/words?rel_trg=${input}&max=8`).then(res => res.json()).then(json => {
       setSuggest(json)
     })
-  }, [])
+  }, [input])
 
+  function chooseSuggest(e) {
+    onChange(e.target.textContent);
+  }
 
   return(
-    <div className="suggestion-bar">
-      {suggestions.map((item, index) => <SuggestionItem title={item.word} key={index} />)}
-    </div>
+    <>
+      <h1>{input}</h1>
+      <div className="suggestion-bar">
+        {suggestions.map((item, index) => <Button basic={true} key={index} onClick={chooseSuggest} >{item.word}</Button>)}
+      </div>
+    </>
   )
 }
 

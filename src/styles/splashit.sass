@@ -37,8 +37,7 @@
   display: flex
   height: calc(100% + 15px)
   box-sizing: initial
-  overflow-x: hidden
-  overflow-y: hidden
+  overflow-x: scroll
   -webkit-overflow-scrolling: touch
   scroll-behavior: smooth
   margin: 1.5rem 0
@@ -50,6 +49,10 @@
     left: 0
   &:after
     right: 0
+  &::-webkit-scrollbar
+    width: 0
+    height: 0
+
 
   div
     padding-right: 4px
@@ -89,7 +92,6 @@
   column-count: 3
 
 .result
-  display: flex
   margin-bottom: 1rem
 
 .result-img

@@ -40,7 +40,7 @@ class HeroSearch extends React.Component {
           {this.state.openSuggest && <span aria-hidden="true" className="clear-search" onClick={this.closeSuggest.bind(this)}><i className="times icon"></i></span>}
         </div>
         <div>
-          {this.state.openSuggest && <table className="ui fixed table fluid">
+          {this.state.suggest.length > 1 && <table className="ui fixed table fluid">
             <tbody className="suggest-table">
               {this.state.suggest.map((item, index) => <tr onClick={this.handleChooseSuggest.bind(this)} key={index}><td>{item.word}</td></tr>)}
             </tbody>

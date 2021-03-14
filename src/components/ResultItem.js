@@ -23,7 +23,7 @@ function ResultItem({ id }) {
         </div>
         <button className="close-icon" onClick={closeModal} />
         <img className="result-modal-photo" src={id.urls.regular}></img>
-        <div className="result-modal-location"><i className="map marker alternate icon"></i>{id.user.location}</div>
+        {id.user.location != null && <div className="result-modal-location"><i className="map marker alternate icon"></i>{id.user.location}</div>}
       </div>}
     </div>
   )
